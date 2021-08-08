@@ -1,65 +1,73 @@
 var genBtn = document.querySelector("#generate");
 
 
-
-var specialCharacters =    "!#$%&')(*+,-./:;<=>?@][_`}{|~^"; 
+//created the var for the 4 different type of characters also created a var for the combination(allChoices) of all the characters
+//then created a var "character" for the password that displays in the textarea after the user specifies all selections. 
+var specialCharacters   = "!#$%&')(*+,-./:;<=>?@][_`}{|~^"; 
 var numericalCharacters = "1234567890";
 var lowerCaseCharacters = "abcdefghijklmnopqrstuvwxyz";
 var upperCaseCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var allchoices = "";
+var allChoices = "";
 var character = "";
 
 function generatePassword() {
-  //parseInt()
-  var passLength = prompt("How many characters do you want as your password?");
+  var passLength = prompt("Please select a number between 8 and 128 for your password!");
 console.log(passLength)
   if (passLength < 8 || passLength > 128) {
-    alert("You have to have at least 8 characters long and lower than 128 characters");
-
+    alert("You have to have a password aleast 8 characters long and lower than 128 characters!");
+    
     return;
   }
 
-  var useLowerCase = confirm("Do you want to use lower case?");
-  var useUpperCase = confirm("Do you want to use upper case?");
-  var useSpecialCharacters = confirm("Do you want to use special characters?");
-  var useNumericalCharacters = confirm("Do you want to use numerical characters");
- 
+  var useLowerCase = confirm("Would you  like lowercase characters in your password?");
+  var useUpperCase = confirm("Would you like uppercase characters in your password?");
+  var useSpecialCharacters = confirm("Would you like special characters in your password?");
+  var useNumericalCharacters = confirm("Would you like numerical characters in your password?");
+  
    if(useLowerCase === true){
-     allchoices += lowerCaseCharacters;
+     allChoices += lowerCaseCharacters;
+     console.log(allChoices);
    }
 
    if(useUpperCase === true){
-    allchoices += upperCaseCharacters;
+    allChoices += upperCaseCharacters;
+    console.log(allChoices);
   }
 
   if(useSpecialCharacters === true){
-    allchoices += specialCharacters;
+    allChoices += specialCharacters;
+    console.log(allChoices);
   }
 
   if(useNumericalCharacters === true){
-    allchoices += numericalCharacters;
+    allChoices += numericalCharacters;
+    console.log(allChoices);
   }
 
-  console.log(allchoices)
+  console.log(allChoices)
 
   if (useLowerCase === false && useUpperCase === false && useSpecialCharacters === false && useNumericalCharacters === false) {
-    alert("You must choose at least one character type!");
+    confirm("You must choose at least one character type for your password!");
+
+    return;
   }
 
 
   for (var i=0; i < passLength; i++) {
 
-    var password = Math.floor(allchoices.length * Math.random())
-    character += allchoices.charAt(password)
+    var password = Math.floor(allChoices.length * Math.random())
+    character += allChoices.charAt(password);
     console.log(character);
    //action
   }
 document.getElementById("password").textContent = character;
+return;
 }
 
 
 
 genBtn.addEventListener("click", generatePassword); 
+
 
 
 
