@@ -14,3 +14,6 @@ statement which factors in if the user rejects all character options.
 Then I created a loop that randomizes the characters chosen by the user. 
 
 Then i scripted the generation of the password into the password field, and finally created the eventlistener to display the password. 
+
+
+LIVE URL:    https://masudahmed88.github.io/PasswordGenerator/
